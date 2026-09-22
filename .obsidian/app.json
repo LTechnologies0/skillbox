@@ -1,0 +1,18 @@
+{
+  "legacyEditor": false,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "attachmentFolderPath": "90-Meta/Attachments",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "80-Inbox",
+  "promptDelete": true,
+  "alwaysUpdateLinks": true,
+  "showFrontmatter": true,
+  "strictLineBreaks": false,
+  "readableLineLength": true,
+  "showLineNumber": false,
+  "spellcheck": true,
+  "trashOption": "local",
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false
+}

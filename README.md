@@ -1,53 +1,51 @@
 # Skillbox
 
-Collection de **Cursor Agent Skills** que je partage volontairement.
+Vault Obsidian + dépôt de **Cursor Agent Skills** partageables.
 
-Chaque skill est un dossier autonome avec un `SKILL.md` (et éventuellement scripts / docs). Tu peux les installer localement ou les fork / cloner pour les réutiliser.
+- Ouvrir le dossier dans Obsidian : `flatpak run md.obsidian.Obsidian /home/user/fakehome/skillbox`
+- Entrée vault : [[Home]]
+- Skills agent : `skills/<nom>/SKILL.md`
+- Embeddings locaux : plugin **Smart Connections** → `.smart-env/`
+- MCP Cursor : serveur `obsidian` (`obsidian-mcp@2`)
 
-## Structure
+## Arborescence
 
 ```
-skills/
-  nom-du-skill/
-    SKILL.md          # obligatoire
-    reference.md      # optionnel
-    scripts/          # optionnel
+Home.md
+Atlas/           # MOCs
+10-Skills/       # portails humains + wikilinks
+20-Concepts/
+80-Inbox/
+90-Meta/
+skills/          # packages Cursor (source of truth agents)
+.obsidian/       # config + Dataview + Smart Connections
 ```
 
-## Installer un skill
-
-Copier ou lier le dossier du skill vers tes skills personnels Cursor :
-
-```bash
-# copie
-cp -R skills/nom-du-skill ~/.cursor/skills/
-
-# ou symlink (reste à jour avec le repo)
-ln -s "$(pwd)/skills/nom-du-skill" ~/.cursor/skills/nom-du-skill
-```
-
-Pour un projet précis uniquement :
-
-```bash
-mkdir -p .cursor/skills
-cp -R /chemin/vers/skillbox/skills/nom-du-skill .cursor/skills/
-```
-
-## Skills disponibles
+## Skills
 
 | Skill | Description |
 |-------|-------------|
-| [ultra-light-gui](skills/ultra-light-gui/) | Règle d’or + **100** principes, garde-fous anti-régression UI, checklist profiling multi-stack |
+| [ultra-light-gui](skills/ultra-light-gui/) | 100 principes GUI + garde-fous + profiling |
+| [unslop-codebase](skills/unslop-codebase/) | Unslop graph/tree + inventaire types + docs riches |
+| [safe-codebase](skills/safe-codebase/) | 40 classes de safety (memory → payments) |
+| [resource-safety](skills/resource-safety/) | Resource safety umbrella (CWE-400/770) |
+| `resource-*` (×13) | Domaines: memory, cpu, fd, concurrency, connections, disk, queues, timeouts, rate-limit, amplification, request-bounds, lifecycle, downstream |
 
-## Ajouter un skill
+## Installer un skill Cursor
 
-1. Créer `skills/<nom>/SKILL.md` (nom en minuscules, tirets, ≤ 64 caractères).
-2. Frontmatter YAML avec `name` + `description` (quoi + quand l’utiliser).
-3. Instructions concises ; détails dans des fichiers liés au même niveau.
-4. Ne jamais mettre de secrets, clés, ni données personnelles.
+```bash
+ln -s "$(pwd)/skills/nom-du-skill" ~/.cursor/skills/nom-du-skill
+```
 
-Voir [skills/_template/SKILL.md](skills/_template/SKILL.md) pour un modèle.
+## MCP
 
-## Licence / partage
+Configuré dans `~/.cursor/mcp.json` :
 
-Ces skills sont destinés à être partagés. Si tu contributes, assume que le contenu peut être redistribué. Adapte la licence du repo si besoin.
+```json
+"obsidian": {
+  "command": "npx",
+  "args": ["-y", "obsidian-mcp@2", "serve", "--vault", "skillbox=/home/user/fakehome/skillbox"]
+}
+```
+
+Recharge les MCP dans Cursor après modification.

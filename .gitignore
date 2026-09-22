@@ -11,3 +11,15 @@ credentials.json
 .idea/
 .vscode/
 *.log
+
+# Obsidian / Smart Connections / MCP runtime
+.smart-env/
+.obsidian-mcp/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+.obsidian/graph.json
+.obsidian/cache
+.trash/
+90-Meta/Attachments/*
+!90-Meta/Attachments/.gitkeep
